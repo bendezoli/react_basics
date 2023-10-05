@@ -1,0 +1,27 @@
+const [firstName, lastName] = ["Bende", "Zoli"];
+
+
+console.log(firstName)
+
+const user = {
+  name: 'Zoli',
+  age: '31'
+}
+
+const {name: userName, age} = user;
+console.log('from object: ' + userName + ' ' + age)
+
+const hobbies = ['sport', 'run'];
+
+const newHobbies = ['reading'];
+
+const mergedArray = [...hobbies, ...newHobbies];
+
+console.log(mergedArray);
+
+const extendedUser = {
+  isadmin: true,
+  ...user
+};
+
+console.log(extendedUser)
