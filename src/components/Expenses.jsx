@@ -1,16 +1,17 @@
 import "./Expenses.css";
 import PropTypes from "prop-types";
 import ExpenseItem from "./ExpenseItem";
+import Card from "./Card";
 
 const Expenses = ({ data }) => {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {data &&
         data.map((expenseItem, expenseIndex) => (
           <ExpenseItem data={expenseItem} key={expenseIndex}></ExpenseItem>
           //   <pre>{JSON.stringify(expenseItem, null, 2)}</pre>
         ))}
-    </div>
+    </Card>
   );
 };
 export default Expenses;
