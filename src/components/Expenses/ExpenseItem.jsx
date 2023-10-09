@@ -1,6 +1,6 @@
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
-import Card from "./Card";
+import Card from "../UI/Card";
 import PropTypes from "prop-types";
 const ExpenseItem = ({ data }) => {
   return (
