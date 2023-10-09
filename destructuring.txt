@@ -26,4 +26,4 @@ const extendedUser = {
 
 console.log(extendedUser)
 
-section 3: 51 played
+section 5: ?
