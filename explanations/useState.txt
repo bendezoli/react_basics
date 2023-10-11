@@ -1,0 +1,44 @@
+const [enteredTitle, setEnteredTitle] = useState("");
+const [enteredAmount, setEnteredAmount] = useState("");
+const [enteredDate, setEnteredDate] = useState("");
+const [validity, setValidity] = useState("");
+const [isValid, setIsValid] = useState(false);
+
+// with one state
+  // call: userInput.enteredTitle
+  // u have to update the all values otherwise the data will be lost
+   const [userInput, setUserInput] = useState({
+     enteredTitle: "",
+     enteredAmount: "",
+     enteredDate: "",
+   });
+
+   const titleChangeHandler = (event) => {
+     setEnteredTitle(event.target.value)
+     if (event.target.value.length > 3) {
+       setValidity("Valid field!");
+       setIsValid(true);
+     } else {
+       setValidity("Invalid filed!");
+       setIsValid(false);
+     }
+      setUserInput({
+      ...userInput,
+        enteredTitle: event.target.value,
+      });
+      keeping the previous state + when you are depending on previous state
+      setUserInput((prevState) => {
+        return { ...prevState, enteredTitle: event.target.value };
+      });
+   };
+
+   const amountChangeHandler = (event) => {
+     setEnteredAmount(event.target.value);
+   }
+   const dateChangeHandler = (event) => {
+     setEnteredDate(event.target.value);
+   };
+
+   onChange="titleChangeHandler"
+   onChange="amountChangeHandler"
+   onChange="dateChangeHandler"

@@ -9,55 +9,37 @@ const ExpenseForm = () => {
   const [validity, setValidity] = useState("");
   const [isValid, setIsValid] = useState(false);
 
-  // with one state
-  // call: userInput.enteredTitle
-  // u have to update the all values otherwise the data will be lost
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
+  // REFACTOR
+  const changeHandler = (type, value) => {
+    if (type === "title") {
+      setEnteredTitle(value);
 
-  const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
-
-    if (event.target.value.length > 3) {
-      setValidity("Valid field!");
-      setIsValid(true);
+      if (value.length > 3) {
+        setValidity("Valid field!");
+        setIsValid(true);
+      } else {
+        setValidity("Invalid field!");
+        setIsValid(false);
+      }
+    } else if (type === "amount") {
+      setEnteredAmount(value);
     } else {
-      setValidity("Invalid filed!");
-      setIsValid(false);
+      setEnteredDate(value);
     }
-    // setUserInput({
-    // ...userInput,
-    //   enteredTitle: event.target.value,
-    // });
-    // keeping the previous state + when you are depending on previous state
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredTitle: event.target.value };
-    // });
-  };
-
-  const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
-  };
-
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
   };
 
   return (
     <div className="new-expense">
-      {/* <p>{userInput.enteredTitle}</p> */}
-      {/* <p>{enteredTitle}</p>
-      <p>{enteredAmount}</p>
-      <p>{enteredDate}</p>
-      <p>{isValid}</p> */}
       <form action="">
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
-            <input type="text" onChange={titleChangeHandler} />
+            <input
+              type="text"
+              onChange={(event) => {
+                changeHandler("title", event.target.value);
+              }}
+            />
             <p className={isValid ? "green" : "red"}>{validity}</p>
           </div>
 
@@ -67,7 +49,9 @@ const ExpenseForm = () => {
               type="number"
               min="0.01s"
               step="0.01"
-              onChange={amountChangeHandler}
+              onChange={(event) => {
+                changeHandler("amount", event.target.value);
+              }}
             />
           </div>
 
@@ -77,7 +61,9 @@ const ExpenseForm = () => {
               type="date"
               min="2019-01-01"
               max="2023-12-31"
-              onChange={dateChangeHandler}
+              onChange={(event) => {
+                changeHandler("date", event.target.value);
+              }}
             />
           </div>
         </div>
