@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 import PropTypes from "prop-types";
 const ExpenseItem = ({ data }) => {
   const [title, setTitle] = useState(data.title);
-
+  console.log("function called");
   const updateTitle = () => {
     setTitle("Title updated");
   };
