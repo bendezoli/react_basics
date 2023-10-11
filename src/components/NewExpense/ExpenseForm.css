@@ -38,3 +38,10 @@
 .green {
   color: green;
 }
+
+.disable {
+  color: white !important;
+  background-color: grey !important;
+  pointer-events: none;
+  /* transition: all 1s; */
+}

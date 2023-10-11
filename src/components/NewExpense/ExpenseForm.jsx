@@ -28,9 +28,13 @@ const ExpenseForm = () => {
     }
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="new-expense">
-      <form action="">
+      <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
@@ -68,8 +72,10 @@ const ExpenseForm = () => {
           </div>
         </div>
 
-        <div className="new-expense__actions">
-          <button type="submit">Add expense</button>
+        <div className="new-expense__actions ">
+          <button type="submit" className={!isValid ? "disable" : ""}>
+            Add expense
+          </button>
         </div>
       </form>
     </div>
