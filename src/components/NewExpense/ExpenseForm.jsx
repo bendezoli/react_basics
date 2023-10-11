@@ -22,10 +22,10 @@ const ExpenseForm = () => {
     setEnteredTitle(event.target.value);
 
     if (event.target.value.length > 3) {
-      setValidity("Valid field");
+      setValidity("Valid field!");
       setIsValid(true);
     } else {
-      setValidity("Invalid filed");
+      setValidity("Invalid filed!");
       setIsValid(false);
     }
     // setUserInput({
@@ -49,10 +49,10 @@ const ExpenseForm = () => {
   return (
     <div className="new-expense">
       {/* <p>{userInput.enteredTitle}</p> */}
-      <p>{enteredTitle}</p>
+      {/* <p>{enteredTitle}</p>
       <p>{enteredAmount}</p>
       <p>{enteredDate}</p>
-      <p>{isValid}</p>
+      <p>{isValid}</p> */}
       <form action="">
         <div className="new-expense__controls">
           <div className="new-expense__control">

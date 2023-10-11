@@ -25,6 +25,11 @@
   text-align: right;
 }
 
+.red,
+.green {
+  margin-top: 5px;
+  transition: all 1s;
+}
 .red {
   color: red;
 }
