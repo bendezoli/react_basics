@@ -7,6 +7,7 @@ const ExpenseForm = () => {
   const [enteredDate, setEnteredDate] = useState("");
 
   const [validity, setValidity] = useState("");
+  const [isValid, setIsValid] = useState(false);
 
   // with one state
   // call: userInput.enteredTitle
@@ -22,8 +23,10 @@ const ExpenseForm = () => {
 
     if (event.target.value.length > 3) {
       setValidity("Valid field");
+      setIsValid(true);
     } else {
       setValidity("Invalid filed");
+      setIsValid(false);
     }
     // setUserInput({
     // ...userInput,
@@ -49,12 +52,13 @@ const ExpenseForm = () => {
       <p>{enteredTitle}</p>
       <p>{enteredAmount}</p>
       <p>{enteredDate}</p>
+      <p>{isValid}</p>
       <form action="">
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
             <input type="text" onChange={titleChangeHandler} />
-            <p>{validity}</p>
+            <p className={isValid ? "green" : "red"}>{validity}</p>
           </div>
 
           <div className="new-expense__control">
