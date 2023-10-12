@@ -9,7 +9,7 @@ const ExpenseForm = (props) => {
   const [validationText, setValidationText] = useState("");
   const [isValidTitle, setIsValidTitle] = useState(false);
   const [isValidDate, setIsValidDate] = useState(false);
-  const [isValidPrice, setIsValidPrice] = useState(false);
+  // const [isValidPrice, setIsValidPrice] = useState(false);
 
   // REFACTOR
   const changeHandler = (type, value) => {
