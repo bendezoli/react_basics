@@ -6,28 +6,33 @@ import ExpensesList from "./ExpensesList";
 import Card from "../UI/Card";
 
 const Expenses = ({ data }) => {
-  const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredYear, setFilteredYear] = useState("All");
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
   const filteredExpenses = data.filter((expense) => {
-    return expense.date.getFullYear().toString() === filteredYear;
+    if (filteredYear === "All" || filteredYear === "") {
+      return expense;
+    } else {
+      return expense.date.getFullYear().toString() === filteredYear;
+    }
   });
+
   return (
     <div>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       <Card className="expenses">
+        <pre>{JSON.stringify(filteredExpenses.length, null, 2)}</pre>
         <ExpensesFilter onChangeFilter={filterChangeHandler} />
-
         <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
 };
+
 export default Expenses;
 
 Expenses.propTypes = {
-  data: PropTypes.any.isRequired,
+  data: PropTypes.array.isRequired,
 };
