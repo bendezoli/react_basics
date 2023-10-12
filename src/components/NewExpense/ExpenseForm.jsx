@@ -3,11 +3,13 @@ import { useState } from "react";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("50");
   const [enteredDate, setEnteredDate] = useState("");
 
-  const [validity, setValidity] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [validationText, setValidationText] = useState("");
+  const [isValidTitle, setIsValidTitle] = useState(false);
+  const [isValidDate, setIsValidDate] = useState(false);
+  const [isValidPrice, setIsValidPrice] = useState(true);
 
   // REFACTOR
   const changeHandler = (type, value) => {
@@ -15,16 +17,27 @@ const ExpenseForm = (props) => {
       setEnteredTitle(value);
 
       if (value.length > 3) {
-        setValidity("Valid field!");
-        setIsValid(true);
+        setValidationText("Valid field!");
+        setIsValidTitle(true);
       } else {
-        setValidity("Invalid field!");
-        setIsValid(false);
+        setValidationText("Invalid field! Minim 3 characters!");
+        setIsValidTitle(false);
       }
     } else if (type === "amount") {
       setEnteredAmount(value);
+
+      if (parseInt(value) < 50) {
+        setValidationText("Minimum price is 50$");
+        setIsValidPrice(false);
+      }
     } else {
       setEnteredDate(value);
+
+      if (value) {
+        setIsValidDate(true);
+      } else {
+        setIsValidDate(false);
+      }
     }
   };
 
@@ -51,25 +64,29 @@ const ExpenseForm = (props) => {
             <label htmlFor="">Title</label>
             <input
               type="text"
+              minLength="3"
+              required
               value={enteredTitle}
               onChange={(event) => {
                 changeHandler("title", event.target.value);
               }}
             />
-            <p className={isValid ? "green" : "red"}>{validity}</p>
+            <p className={isValidTitle ? "green" : "red"}>{validationText}</p>
           </div>
 
           <div className="new-expense__control">
             <label htmlFor="">Amount</label>
             <input
               type="number"
-              min="0.01s"
+              min="50"
               step="0.01"
+              required
               value={enteredAmount}
               onChange={(event) => {
                 changeHandler("amount", event.target.value);
               }}
             />
+            {!isValidPrice && <p className="red">Minimum price is 50$!</p>}
           </div>
 
           <div className="new-expense__control">
@@ -78,6 +95,7 @@ const ExpenseForm = (props) => {
               type="date"
               min="2019-01-01"
               max="2023-12-31"
+              required
               value={enteredDate}
               onChange={(event) => {
                 changeHandler("date", event.target.value);
@@ -87,7 +105,7 @@ const ExpenseForm = (props) => {
         </div>
 
         <div className="new-expense__actions ">
-          <button type="submit" className={!isValid ? "disable" : ""}>
+          <button type="submit" className={!isValidDate ? "disable" : ""}>
             Add expense
           </button>
         </div>
