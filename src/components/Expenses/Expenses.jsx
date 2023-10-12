@@ -9,7 +9,7 @@ const Expenses = ({ data }) => {
       {data &&
         data.map((expenseItem, expenseIndex) => (
           <ExpenseItem data={expenseItem} key={expenseIndex}></ExpenseItem>
-          //   <pre>{JSON.stringify(expenseItem, null, 2)}</pre>
+          // <pre>{JSON.stringify(expenseItem, null, 2)}</pre>
         ))}
     </Card>
   );
