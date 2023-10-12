@@ -23,7 +23,7 @@ const Expenses = ({ data }) => {
   return (
     <div>
       <Card className="expenses">
-        <pre>{JSON.stringify(filteredExpenses.length, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(filteredExpenses.length, null, 2)}</pre> */}
         <ExpensesFilter onChangeFilter={filterChangeHandler} />
         <ExpensesList items={filteredExpenses} />
       </Card>
