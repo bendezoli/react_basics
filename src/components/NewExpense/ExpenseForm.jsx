@@ -3,13 +3,13 @@ import { useState } from "react";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("50");
+  const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const [validationText, setValidationText] = useState("");
   const [isValidTitle, setIsValidTitle] = useState(false);
   const [isValidDate, setIsValidDate] = useState(false);
-  const [isValidPrice, setIsValidPrice] = useState(true);
+  const [isValidPrice, setIsValidPrice] = useState(false);
 
   // REFACTOR
   const changeHandler = (type, value) => {
@@ -26,10 +26,11 @@ const ExpenseForm = (props) => {
     } else if (type === "amount") {
       setEnteredAmount(value);
 
-      if (parseInt(value) < 50) {
-        setValidationText("Minimum price is 50$");
-        setIsValidPrice(false);
-      }
+      // if (parseInt(value) < 50) {
+      //   setIsValidPrice(false);
+      // } else {
+      //   setIsValidPrice(true);
+      // }
     } else {
       setEnteredDate(value);
 
@@ -86,7 +87,7 @@ const ExpenseForm = (props) => {
                 changeHandler("amount", event.target.value);
               }}
             />
-            {!isValidPrice && <p className="red">Minimum price is 50$!</p>}
+            {/* {!isValidPrice && <p className="red">Minimum price is 50$!</p>} */}
           </div>
 
           <div className="new-expense__control">
