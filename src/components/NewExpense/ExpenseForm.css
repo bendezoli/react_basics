@@ -45,3 +45,8 @@
   pointer-events: none;
   /* transition: all 1s; */
 }
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}

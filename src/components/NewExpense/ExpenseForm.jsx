@@ -5,11 +5,16 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-
   const [validationText, setValidationText] = useState("");
   const [isValidTitle, setIsValidTitle] = useState(false);
-  const [isValidDate, setIsValidDate] = useState(false);
+
   // const [isValidPrice, setIsValidPrice] = useState(false);
+
+  // const buttonWrapperClass = () => {
+  //   if (!showForm) {
+  //     return "justify-content: center";
+  //   }
+  // };
 
   // REFACTOR
   const changeHandler = (type, value) => {
@@ -33,12 +38,6 @@ const ExpenseForm = (props) => {
       // }
     } else {
       setEnteredDate(value);
-
-      if (value) {
-        setIsValidDate(true);
-      } else {
-        setIsValidDate(false);
-      }
     }
   };
 
@@ -105,10 +104,16 @@ const ExpenseForm = (props) => {
           </div>
         </div>
 
-        <div className="new-expense__actions ">
-          <button type="submit" className={!isValidDate ? "disable" : ""}>
-            Add expense
-          </button>
+        <div className={`button-wrapper`}>
+          <div className="new-expense__actions ">
+            <button type="submit">Add expense</button>
+          </div>
+
+          <div className="new-expense__actions ">
+            <button type="button" onClick={props.onCloseForm}>
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </div>
