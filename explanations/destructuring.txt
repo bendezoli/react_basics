@@ -26,4 +26,4 @@ const extendedUser = {
 
 console.log(extendedUser)
 
-section 5: ?
+section 10: comming up next
