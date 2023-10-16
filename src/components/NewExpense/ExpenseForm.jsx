@@ -1,3 +1,4 @@
+import CancelButton from "../UI/CancelButton";
 import "./ExpenseForm.css";
 import { useState } from "react";
 
@@ -109,10 +110,8 @@ const ExpenseForm = (props) => {
             <button type="submit">Add expense</button>
           </div>
 
-          <div className="new-expense__actions ">
-            <button type="button" onClick={props.onCloseForm}>
-              Cancel
-            </button>
+          <div className="new-expense__close" onClick={props.onCloseForm}>
+            <CancelButton type="button">Cancel</CancelButton>
           </div>
         </div>
       </form>
