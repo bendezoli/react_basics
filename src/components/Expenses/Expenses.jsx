@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 import Card from "../UI/Card";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = ({ data }) => {
   const [filteredYear, setFilteredYear] = useState("All");
@@ -25,6 +26,7 @@ const Expenses = ({ data }) => {
       <Card className="expenses">
         {/* <pre>{JSON.stringify(filteredExpenses.length, null, 2)}</pre> */}
         <ExpensesFilter onChangeFilter={filterChangeHandler} />
+        <ExpensesChart expense={filteredExpenses} />
         <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
