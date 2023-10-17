@@ -42,7 +42,7 @@ const App = () => {
   };
 
   return (
-    <React.Fragment className="main-app">
+    <React.Fragment>
       <NewExpense onSaveExpenseDataHandler={newExpense} />
       <Expenses data={expenseItems} />
     </React.Fragment>

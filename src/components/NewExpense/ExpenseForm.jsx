@@ -1,6 +1,7 @@
+import userEvent from "@testing-library/user-event";
 import CancelButton from "../UI/CancelButton";
 import "./ExpenseForm.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -57,6 +58,9 @@ const ExpenseForm = (props) => {
     setEnteredDate("");
   };
 
+  const inputVl = useRef();
+  console.log(inputVl.current.value);
+
   return (
     <div className="new-expense">
       <form onSubmit={submitHandler}>
@@ -64,6 +68,7 @@ const ExpenseForm = (props) => {
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
             <input
+              ref={inputVl}
               type="text"
               minLength="3"
               required

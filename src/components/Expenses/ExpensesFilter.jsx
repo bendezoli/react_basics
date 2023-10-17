@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./ExpensesFilter.css";
 import ErrorModal from "../UI/ErrorModal"; // Update the import statement
 
@@ -14,9 +14,14 @@ const ExpensesFilter = (props) => {
     console.log("clicked");
   };
 
+  const btnLbl = useRef();
+  console.log(btnLbl);
+
   return (
     <div className="expenses-filter">
-      <button onClick={turnOnOFF}>Teleporting modal test</button>
+      <button ref={btnLbl} onClick={turnOnOFF}>
+        Teleporting modal test
+      </button>
       {isOn && <ErrorModal closeModal={turnOnOFF} />}
       <div className="expenses-filter__control">
         <label>Filter by year</label>
