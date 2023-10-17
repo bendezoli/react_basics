@@ -1,14 +1,23 @@
-import React from "react";
-
+import React, { useState } from "react";
 import "./ExpensesFilter.css";
+import ErrorModal from "../UI/ErrorModal"; // Update the import statement
 
 const ExpensesFilter = (props) => {
   const dropdownChangeHandler = (event) => {
     props.onChangeFilter(event.target.value);
   };
 
+  const [isOn, setOnOFF] = useState(false);
+
+  const turnOnOFF = () => {
+    setOnOFF((isOn) => !isOn);
+    console.log("clicked");
+  };
+
   return (
     <div className="expenses-filter">
+      <button onClick={turnOnOFF}>Teleporting modal test</button>
+      {isOn && <ErrorModal closeModal={turnOnOFF} />}
       <div className="expenses-filter__control">
         <label>Filter by year</label>
         <select onChange={dropdownChangeHandler}>

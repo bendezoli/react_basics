@@ -1,3 +1,4 @@
+import React from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { useState } from "react";
@@ -41,10 +42,10 @@ const App = () => {
   };
 
   return (
-    <div>
+    <React.Fragment className="main-app">
       <NewExpense onSaveExpenseDataHandler={newExpense} />
       <Expenses data={expenseItems} />
-    </div>
+    </React.Fragment>
   );
 };
 
