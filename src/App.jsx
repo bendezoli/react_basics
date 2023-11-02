@@ -2,6 +2,7 @@ import React from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { useState } from "react";
+import InfiniteText from "./components/Learning/InfiniteText";
 const App = () => {
   const expenses = [
     {
@@ -43,6 +44,7 @@ const App = () => {
 
   return (
     <React.Fragment>
+      <InfiniteText></InfiniteText>
       <NewExpense onSaveExpenseDataHandler={newExpense} />
       <Expenses data={expenseItems} />
     </React.Fragment>

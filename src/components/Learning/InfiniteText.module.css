@@ -1,0 +1,58 @@
+.main {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  margin-bottom: 100vh;
+  overflow: hidden;
+}
+
+.main img {
+  object-fit: cover;
+}
+
+.sliderContainer {
+  position: absolute;
+  top: calc(100vh - 350px);
+}
+.sliderContainer2 {
+  position: absolute;
+  top: calc(100vh - 240px);
+}
+
+.slider1,
+.slider2 {
+  position: relative;
+  white-space: nowrap;
+}
+
+.slider1 p,
+.slider2 p {
+  position: relative;
+  margin: 0px;
+  color: white;
+  font-size: 112px;
+  font-weight: 500;
+  padding-right: 50px;
+}
+
+.slider1 p:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+.slider1 p:nth-of-type(3) {
+  position: absolute;
+  left: 200%;
+  top: 0;
+}
+
+.slider2 p:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+.slider2 p:nth-of-type(3) {
+  position: absolute;
+  left: 200%;
+  top: 0;
+}
